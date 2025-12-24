@@ -1,0 +1,179 @@
+.payment-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: var(--bg-primary, #ffffff);
+  color: var(--text-primary, #0f172a);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--primary-color, #1a56db);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.loading-container,
+.error-container {
+  text-align: center;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color, #e2e8f0);
+  border-top-color: var(--primary-color, #1a56db);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+.primary-button {
+  background: var(--primary-color, #1a56db);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.order-summary {
+  background: var(--bg-secondary, #f8fafc);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary, #0f172a);
+  }
+}
+
+.vehicle-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vehicle-thumb {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.vehicle-details {
+  flex: 1;
+
+  h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-primary, #0f172a);
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #64748b);
+    margin: 0.25rem 0 0;
+  }
+}
+
+.vehicle-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color, #1a56db);
+}
+
+.payment-options {
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary, #0f172a);
+  }
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-secondary, #f8fafc);
+  border: 2px solid var(--border-color, #e2e8f0);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--primary-color, #1a56db);
+    background: var(--bg-hover, #f1f5f9);
+  }
+}
+
+.method-icon {
+  font-size: 2rem;
+  width: 50px;
+  text-align: center;
+}
+
+.method-details {
+  flex: 1;
+
+  h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-primary, #0f172a);
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #64748b);
+    margin: 0.25rem 0 0;
+  }
+}
+
+.method-arrow {
+  font-size: 1.25rem;
+  color: var(--text-secondary, #64748b);
+}
+
+.secure-badge {
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-secondary, #64748b);
+  font-size: 0.875rem;
+  margin-top: 2rem;
+
+  span {
+    color: #22c55e;
+  }
+}

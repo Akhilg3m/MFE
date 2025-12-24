@@ -1,0 +1,106 @@
+<div class="payment-summary-container">
+  <button class="back-button" (click)="goBack()" *ngIf="!paymentSuccess">← Back to Payment Options</button>
+
+  <!-- Payment Success -->
+  <div class="success-container" *ngIf="paymentSuccess">
+    <div class="success-icon">✓</div>
+    <h2>Payment Successful!</h2>
+    <p>Thank you for your purchase</p>
+    <div class="order-details">
+      <p><strong>Payment Method:</strong> {{ paymentMethod | uppercase }}</p>
+      <p *ngIf="paymentMethod === 'card'"><strong>Card:</strong> {{ maskedCardNumber }}</p>
+      <p><strong>Transaction ID:</strong> {{ transactionId }}</p>
+    </div>
+    <button class="primary-button" (click)="goToHome()">Continue Shopping</button>
+  </div>
+
+  <!-- Payment Form -->
+  <div class="payment-form-container" *ngIf="!paymentSuccess">
+    <div class="payment-header">
+      <div class="method-icon">{{ paymentMethod === 'upi' ? '📱' : '💳' }}</div>
+      <h2>{{ paymentMethod === 'upi' ? 'UPI Payment' : 'Card Payment' }}</h2>
+    </div>
+
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+      <!-- UPI Form -->
+      <ng-container *ngIf="paymentMethod === 'upi'">
+        <div class="form-group">
+          <label for="upiId">UPI ID</label>
+          <input type="text" id="upiId" formControlName="upiId" placeholder="yourname@upi"
+                 [class.error]="formControls['upiId'].invalid && formControls['upiId'].touched">
+          <div class="error-text" *ngIf="formControls['upiId'].invalid && formControls['upiId'].touched">
+            <span *ngIf="formControls['upiId'].errors?.['required']">UPI ID is required</span>
+            <span *ngIf="formControls['upiId'].errors?.['pattern']">Enter a valid UPI ID (e.g., name&#64;upi)</span>
+          </div>
+          <p class="helper-text">Examples: name&#64;okaxis, mobile&#64;ybl, username&#64;paytm</p>
+        </div>
+      </ng-container>
+
+      <!-- Card Form -->
+      <ng-container *ngIf="paymentMethod === 'card'">
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" formControlName="cardNumber" placeholder="1234 5678 9012 3456"
+                 maxlength="16" (input)="formatCardNumber($event)"
+                 [class.error]="formControls['cardNumber'].invalid && formControls['cardNumber'].touched">
+          <div class="error-text" *ngIf="formControls['cardNumber'].invalid && formControls['cardNumber'].touched">
+            <span *ngIf="formControls['cardNumber'].errors?.['required']">Card number is required</span>
+            <span *ngIf="formControls['cardNumber'].errors?.['pattern']">Enter a valid 16-digit card number</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cardholderName">Cardholder Name</label>
+          <input type="text" id="cardholderName" formControlName="cardholderName" placeholder="JOHN DOE"
+                 [class.error]="formControls['cardholderName'].invalid && formControls['cardholderName'].touched">
+          <div class="error-text" *ngIf="formControls['cardholderName'].invalid && formControls['cardholderName'].touched">
+            <span *ngIf="formControls['cardholderName'].errors?.['required']">Cardholder name is required</span>
+            <span *ngIf="formControls['cardholderName'].errors?.['minlength']">Name must be at least 3 characters</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="expiryDate">Expiry Date</label>
+            <input type="text" id="expiryDate" formControlName="expiryDate" placeholder="MM/YY"
+                   maxlength="5" (input)="formatExpiryDate($event)"
+                   [class.error]="formControls['expiryDate'].invalid && formControls['expiryDate'].touched">
+            <div class="error-text" *ngIf="formControls['expiryDate'].invalid && formControls['expiryDate'].touched">
+              <span *ngIf="formControls['expiryDate'].errors?.['required']">Required</span>
+              <span *ngIf="formControls['expiryDate'].errors?.['pattern']">Invalid format</span>
+            </div>
+          </div>
+
+          <div class="form-group half">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" formControlName="cvv" placeholder="123" maxlength="4"
+                   [class.error]="formControls['cvv'].invalid && formControls['cvv'].touched">
+            <div class="error-text" *ngIf="formControls['cvv'].invalid && formControls['cvv'].touched">
+              <span *ngIf="formControls['cvv'].errors?.['required']">Required</span>
+              <span *ngIf="formControls['cvv'].errors?.['pattern']">Invalid CVV</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-brands">
+          <span>We accept:</span>
+          <span class="brand">VISA</span>
+          <span class="brand">Mastercard</span>
+          <span class="brand">Amex</span>
+        </div>
+      </ng-container>
+
+      <button type="submit" class="submit-button" [disabled]="isProcessing">
+        <span *ngIf="!isProcessing">Pay Now</span>
+        <span *ngIf="isProcessing">
+          <span class="button-spinner"></span>
+          Processing...
+        </span>
+      </button>
+    </form>
+
+    <div class="secure-badge">
+      <span>🔒</span> Your payment is secure and encrypted
+    </div>
+  </div>
+</div>

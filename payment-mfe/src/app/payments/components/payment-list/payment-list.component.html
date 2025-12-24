@@ -1,0 +1,28 @@
+<div class="payment-list-container">
+
+  <div class="payment-options">
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-method" (click)="selectUPI()">
+      <div class="method-icon">📱</div>
+      <div class="method-details">
+        <h3>UPI Payment</h3>
+        <p>Pay using your UPI ID (Google Pay, PhonePe, Paytm)</p>
+      </div>
+      <div class="method-arrow">→</div>
+    </div>
+
+    <div class="payment-method" (click)="selectCard()">
+      <div class="method-icon">💳</div>
+      <div class="method-details">
+        <h3>Credit / Debit Card</h3>
+        <p>Pay using Visa, Mastercard, or other cards</p>
+      </div>
+      <div class="method-arrow">→</div>
+    </div>
+  </div>
+
+  <div class="secure-badge">
+    <span>🔒</span> Your payment information is secure and encrypted
+  </div>
+</div>

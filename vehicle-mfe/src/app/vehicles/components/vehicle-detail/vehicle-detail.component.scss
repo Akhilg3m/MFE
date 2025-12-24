@@ -1,0 +1,253 @@
+.vehicle-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: 2px solid var(--border-color, #e2e8f0);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 1.5rem;
+
+  &:hover {
+    background: var(--bg-secondary, #f8fafc);
+  }
+}
+
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-color, #e2e8f0);
+  border-top-color: var(--primary-color, #1a56db);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-icon {
+  font-size: 48px;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 1.125rem;
+}
+
+.primary-button {
+  background: var(--primary-color, #1a56db);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.vehicle-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.image-section {
+  background: var(--bg-secondary, #f8fafc);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.main-image {
+  position: relative;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.image-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  .badge {
+    background: #22c55e;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+}
+
+.details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title-section {
+  .vehicle-title {
+    margin: 0 0 0.25rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary, #0f172a);
+  }
+
+  .manufacturer {
+    margin: 0;
+    font-size: 1.125rem;
+    color: var(--text-secondary, #64748b);
+  }
+}
+
+.price-section {
+  background: #eff6ff;
+  border: 2px solid var(--primary-color, #1a56db);
+  border-radius: 12px;
+  padding: 1rem;
+
+  .price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color, #1a56db);
+  }
+
+  .price-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #64748b);
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.buy-btn {
+  flex: 2;
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #16a34a;
+  }
+}
+
+.contact-btn {
+  flex: 1;
+  background: var(--primary-color, #1a56db);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.save-btn {
+  background: none;
+  border: 2px solid var(--border-color, #e2e8f0);
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary, #f8fafc);
+  }
+}
+
+.specs-section {
+  background: var(--bg-secondary, #f8fafc);
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.spec-item {
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+
+  .spec-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #64748b);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .spec-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary, #0f172a);
+  }
+}
+
+.seller-info {
+  background: #eff6ff;
+  border: 2px solid var(--primary-color, #1a56db);
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+    color: var(--primary-color, #1a56db);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 0.25rem 0;
+      color: var(--text-primary, #0f172a);
+    }
+  }
+}

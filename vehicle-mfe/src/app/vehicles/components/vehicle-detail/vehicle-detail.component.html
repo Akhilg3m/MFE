@@ -1,0 +1,75 @@
+<div class="vehicle-detail-container">
+  <button class="back-button" (click)="goBack()">← Back to Listings</button>
+
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading vehicle details...</p>
+  </div>
+
+  <div class="error-container" *ngIf="errorMessage && !isLoading">
+    <div class="error-icon">⚠️</div>
+    <p class="error-message">{{ errorMessage }}</p>
+    <button class="primary-button" (click)="goBack()">Return to Listings</button>
+  </div>
+
+  <div class="vehicle-content" *ngIf="vehicle && !isLoading" (click)="onInteraction()">
+    <div class="image-section">
+      <div class="main-image">
+        <img [src]="vehicle.image" [alt]="vehicle.Vehicle">
+        <div class="image-badge">
+          <span class="badge">Available Now</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="details-section">
+      <div class="title-section">
+        <h1 class="vehicle-title">{{ vehicle.Vehicle }}</h1>
+        <p class="manufacturer">{{ vehicle.manufacturer }} {{ vehicle.model }}</p>
+      </div>
+
+      <div class="price-section">
+        <div class="price">${{ vehicle.cost }}</div>
+        <span class="price-label">Asking Price</span>
+      </div>
+
+      <div class="action-buttons">
+        <button class="buy-btn" (click)="buyNow()">🛒 Buy Now</button>
+        <button class="contact-btn">📞 Contact Seller</button>
+        <button class="save-btn">♡ Save</button>
+      </div>
+
+      <div class="specs-section">
+        <h2>Vehicle Specifications</h2>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">Type</span>
+            <span class="spec-value">{{ vehicle.type }}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Fuel</span>
+            <span class="spec-value">{{ vehicle.fuel }}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Color</span>
+            <span class="spec-value">{{ vehicle.color | capitalize }}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Tyres</span>
+            <span class="spec-value">{{ vehicle.tyres }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="seller-info">
+        <h3>Why Buy From Us?</h3>
+        <ul>
+          <li>✓ 7-Day Money Back Guarantee</li>
+          <li>✓ Free Vehicle History Report</li>
+          <li>✓ 150+ Point Inspection</li>
+          <li>✓ Easy Financing Available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
